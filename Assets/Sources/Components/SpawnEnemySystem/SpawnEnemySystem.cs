@@ -1,13 +1,21 @@
 using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 
 public class SpawnEnemySystem : MonoBehaviour
 {
+    public List<BaseEnemy> Enemies { get; private set; }
+    
     [SerializeField] private Transform _firstSpawnPosition;
     [SerializeField] private Transform _secondSpawnPosition;
     [SerializeField] private Transform _mainBuilding;
 
     [SerializeField] private WaveData _testWave;
+
+    private void Awake()
+    {
+        Enemies = new List<BaseEnemy>();
+    }
 
     private void Start()
     {
@@ -36,7 +44,7 @@ public class SpawnEnemySystem : MonoBehaviour
                 BaseEnemy baseEnemy = enemy.GetComponent<BaseEnemy>();
 
                 baseEnemy.Initialize(waveEnemyData.EnemyData, _mainBuilding.position);
-
+                Enemies.Add(baseEnemy);
                 yield return waitForSeconds;
             }
         }

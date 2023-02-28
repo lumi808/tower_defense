@@ -22,16 +22,19 @@ MonoBehaviour:
     SellPrice: 0
     UpgradePrice: 0
     AttackRate: 0
+    Radius: 5
     Prefab: {fileID: 0}
   - Name: MachineGun Level 1
     BaseDamage: 0
     SellPrice: 0
     UpgradePrice: 0
     AttackRate: 0
+    Radius: 5
     Prefab: {fileID: 0}
   - Name: MachineGun Level 2
     BaseDamage: 0
     SellPrice: 0
     UpgradePrice: 0
     AttackRate: 0
+    Radius: 5
     Prefab: {fileID: 0}

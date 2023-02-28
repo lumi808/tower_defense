@@ -21,6 +21,7 @@ public class TowerData : ScriptableObject
         public float SellPrice;
         public float UpgradePrice;
         public float AttackRate;
+        public float Radius;
         public GameObject Prefab;
     }
 

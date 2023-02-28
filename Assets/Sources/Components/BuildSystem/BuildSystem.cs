@@ -7,6 +7,7 @@ public class BuildSystem : MonoBehaviour
     [SerializeField] private TowerLibrary _towerLibrary;
     [SerializeField] private SelectionSystem _selectionSystem;
     [SerializeField] private TowerUpgradeSystem _upgradeSystem;
+    [SerializeField] private SpawnEnemySystem _spawnEnemySystem;
 
     private Dictionary<TowerData.TowerType, TowerData> _towerDataMap;
 
@@ -38,7 +39,7 @@ public class BuildSystem : MonoBehaviour
 
             if(baseTower != null)
             {
-                baseTower.Initialze(_towerDataMap[towerType]);
+                baseTower.Initialze(_towerDataMap[towerType], _spawnEnemySystem.Enemies);
             }
 
             StartCoroutine(BuildTowerInTime(tower, 5f));

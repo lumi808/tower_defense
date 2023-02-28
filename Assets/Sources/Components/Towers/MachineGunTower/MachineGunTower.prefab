@@ -430,6 +430,7 @@ GameObject:
   - component: {fileID: 1685768359457578513}
   - component: {fileID: 4916812684412109396}
   - component: {fileID: 3989523505028905565}
+  - component: {fileID: 4847720961742486268}
   m_Layer: 0
   m_Name: MachineGunTower
   m_TagString: Untagged
@@ -503,3 +504,20 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
+--- !u!114 &4847720961742486268
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 9028846301889302618}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fa6eac37079643e6a9c4daeb28adbba, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _levelObjects:
+  - {fileID: 3806641141956655475}
+  - {fileID: 6057194076773341745}
+  - {fileID: 3540213118862135705}
+  _rotateElement: {fileID: 7552769160108940958}

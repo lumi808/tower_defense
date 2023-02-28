@@ -5,11 +5,12 @@ using UnityEngine.UI;
 
 public class BuildTowerPanel : MonoBehaviour
 {
-    // Задача: при запуске игры создавать кнопки для каждой из башнен
+    
     [SerializeField] private GameObject _buttonPrefab;
     [SerializeField] private TowerLibrary _towerLibrary;
     [SerializeField] private BuildSystem _buildSystem;
     [SerializeField] private Animator _animator;
+
 
     private void Start()
     {

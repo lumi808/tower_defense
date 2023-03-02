@@ -18,11 +18,13 @@ public class SceneEventSystem : MonoBehaviour
     }
 
     public delegate void CellEvent(TowerCell towerCell);
+    public delegate void EnemyEvent(BaseEnemy enemy);
 
     public event CellEvent CellSelected;
     public event CellEvent CellDeselected;
     public event CellEvent CellUsed;
 
+    public event EnemyEvent EnemyDied;
     public event Action OnUpgradeButtonPressed;
 
     public void NotifyUpgradeButtonPressed()
@@ -43,5 +45,10 @@ public class SceneEventSystem : MonoBehaviour
     public void NotifyCellUsed(TowerCell towerCell)
     {
         CellUsed?.Invoke(towerCell);
+    }
+
+    public void NotifyEnemyDied(BaseEnemy enemy)
+    {
+        EnemyDied?.Invoke(enemy);
     }
 }

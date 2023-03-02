@@ -42,7 +42,7 @@ public class BuildSystem : MonoBehaviour
                 baseTower.Initialze(_towerDataMap[towerType], _spawnEnemySystem.Enemies);
             }
 
-            StartCoroutine(BuildTowerInTime(tower, 5f));
+            StartCoroutine(BuildTowerInTime(tower, 5f, baseTower));
 
             _upgradeSystem.RegisterTower(currentSelected, baseTower);
             cell.UseCell();
@@ -60,13 +60,8 @@ public class BuildSystem : MonoBehaviour
         // do action
     }
 
-    private IEnumerator BuildTowerInTime(GameObject tower, float duration)
+    private IEnumerator BuildTowerInTime(GameObject tower, float duration, BaseTower baseTower)
     {
-        // увеличивать башню до необходимого размера в течени duration времени
-
-        // 1. Определяем время окончания "анимация"
-        // 2. Каждый кадр выставляем размер башни
-
         float startTime = Time.time;
         float endTime = startTime + duration;
 
@@ -85,5 +80,6 @@ public class BuildSystem : MonoBehaviour
         }
 
         tower.transform.localScale = Vector3.one * endSize;
+        baseTower.SetTowerActive(true);
     }
 }

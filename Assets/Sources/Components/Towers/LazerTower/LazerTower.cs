@@ -16,23 +16,30 @@ public class LazerTower : BaseTower, IUpgradable
 
     private void Update()
     {
-        if(AvailabeEnemies.Count == 0)
+        if(AvailabeEnemies.Count == 0 || !IsActive)
         {
             return;
         }
 
         BaseEnemy target = AvailabeEnemies[0];
+        if(target == null)
+        {
+            AvailabeEnemies.RemoveAt(0);
+            return;
+        }
 
         Vector3 localPoint = _attackPoint.transform.InverseTransformPoint(target.transform.position);
         _lineRenderer.SetPosition(1, localPoint);
 
         Vector3 toEnemyVector = target.transform.position - transform.position;
-
-        
-
         toEnemyVector.y = 0;
-
         _rotateElement.right = toEnemyVector;
+
+        Attack(target);
+    }
+
+    private void Attack(BaseEnemy target)
+    {
+        target.GetDamage(BaseDamage * Time.deltaTime);
     }
 }
-

@@ -1,3 +1,4 @@
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -17,9 +18,24 @@ public class SpawnEnemySystem : MonoBehaviour
         Enemies = new List<BaseEnemy>();
     }
 
+
     private void Start()
     {
+        SceneEventSystem.Instance.EnemyDied += OnEnemyDied;
         SpawnWaveUnit(_testWave, 0.5f);
+    }
+
+    private void OnDestroy()
+    {
+        SceneEventSystem.Instance.EnemyDied -= OnEnemyDied;
+    }
+
+    private void OnEnemyDied(BaseEnemy enemy)
+    {
+        if (Enemies.Contains(enemy))
+        {
+            Enemies.Remove(enemy);
+        }
     }
 
     public void SpawnWaveUnit(WaveData waveData, float tickTime)

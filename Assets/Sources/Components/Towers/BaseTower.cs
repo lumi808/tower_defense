@@ -12,6 +12,7 @@ public class BaseTower : MonoBehaviour
 
     protected int Level;
     protected TowerData TowerData;
+    protected bool IsActive;
 
     [Header("Level Objects")]
     [SerializeField] private GameObject[] _levelObjects;
@@ -29,8 +30,18 @@ public class BaseTower : MonoBehaviour
         UpgradeStats();
     }
 
+    public void SetTowerActive(bool isActive)
+    {
+        IsActive = isActive;
+    }
+
     private void FixedUpdate()
     {
+        if (!IsActive)
+        {
+            return;
+        }
+
         FindEnemies();
     }
 

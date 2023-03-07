@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Tank
   m_EditorClassIdentifier: 
   Name: Tank
-  Speed: 2
+  Speed: 10
   Health: 200
   Damage: 30
   AttackRate: 1

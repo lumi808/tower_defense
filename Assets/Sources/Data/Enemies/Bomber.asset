@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Bomber
   m_EditorClassIdentifier: 
   Name: Bomber
-  Speed: 3
+  Speed: 10
   Health: 100
-  Damage: 3
+  Damage: 10
   AttackRate: 2
   ResourceReward: 10
   Prefab: {fileID: 3380191588315554151, guid: efeae89a322524b8d8bdc9b63cca6de3, type: 3}

@@ -8,6 +8,7 @@ public class TowerOptionsPanel : MonoBehaviour
 {
     [SerializeField] private Button _upgradeButton;
     [SerializeField] private Button _sellButton;
+    [SerializeField] private TowerUpgradeSystem _upgradeSystem;
 
     private Animator _animator;
 
@@ -19,6 +20,17 @@ public class TowerOptionsPanel : MonoBehaviour
     private void Start()
     {
         _upgradeButton.onClick.AddListener(NotifyEvent);
+        SceneEventSystem.Instance.BalanceChanged += OnBalanceChanged;
+    }
+
+    private void OnDestroy()
+    {
+        SceneEventSystem.Instance.BalanceChanged -= OnBalanceChanged;
+    }
+
+    private void OnBalanceChanged(float obj)
+    {
+        SetButtonsInteractivity();
     }
 
     private void NotifyEvent()
@@ -29,10 +41,16 @@ public class TowerOptionsPanel : MonoBehaviour
     public void Show()
     {
         _animator.SetBool("show", true);
+        SetButtonsInteractivity();
     }
 
     public void Hide()
     {
         _animator.SetBool("show", false);
+    }
+
+    private void SetButtonsInteractivity()
+    {
+        _upgradeButton.interactable = ResourceSystem.HasEnoughMoney(_upgradeSystem.GetSelectedUpgradePrice());
     }
 }

@@ -46,6 +46,7 @@ public class BuildSystem : MonoBehaviour
 
             _upgradeSystem.RegisterTower(currentSelected, baseTower);
             cell.UseCell();
+            ResourceSystem.SpendMoney(baseTower.GetUpgradePrice());
         }
     }
 

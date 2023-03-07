@@ -1,6 +1,6 @@
 using UnityEngine;
 
-public class BomberEnemy : BaseEnemy
+public class Tank : BaseEnemy
 {
     private float _nextTimeAttack;
 
@@ -26,7 +26,7 @@ public class BomberEnemy : BaseEnemy
 
     private void Attack()
     {
-        _mainBuilding.GetDamage(Damage);
-        Destroy(gameObject);
+        if (_mainBuilding)
+            _mainBuilding.GetDamage(Damage);
     }
 }

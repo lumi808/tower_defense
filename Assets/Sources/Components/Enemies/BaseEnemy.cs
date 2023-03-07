@@ -12,6 +12,7 @@ public class BaseEnemy : MonoBehaviour
 
     protected NavMeshAgent _navMesh;
     protected float _attackRate;
+    protected MainBuilding _mainBuilding;
 
     [SerializeField] protected EnemyState _enemyState;
     private HealthBar _healthBar;
@@ -28,15 +29,16 @@ public class BaseEnemy : MonoBehaviour
         _healthBar = GetComponentInChildren<HealthBar>();
     }
 
-    public void Initialize(EnemyData enemyData, Vector3 destination)
+    public void Initialize(EnemyData enemyData, MainBuilding mainBuilding)
     {
         Speed = enemyData.Speed;
         Health = enemyData.Health;
         Damage = enemyData.Damage;
         ResourceReward = enemyData.ResourceReward;
         _attackRate = enemyData.AttackRate;
+        _mainBuilding = mainBuilding;
 
-        _navMesh.SetDestination(destination);
+        _navMesh.SetDestination(mainBuilding.transform.position);
         _enemyState = EnemyState.Move;
 
         _healthBar.Initialize(0, Health);

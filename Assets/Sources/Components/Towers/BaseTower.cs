@@ -76,4 +76,10 @@ public class BaseTower : MonoBehaviour
             _levelObjects[i].SetActive(i == Level);
         }
     }
+
+    public float GetUpgradePrice()
+    {
+        TowerData.TowerLevelInfo levelInfo = TowerData.UpdageInfo[Level];
+        return levelInfo.UpgradePrice;
+    }
 }

@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,10 +5,10 @@ using UnityEngine;
 public class SpawnEnemySystem : MonoBehaviour
 {
     public List<BaseEnemy> Enemies { get; private set; }
-    
+
     [SerializeField] private Transform _firstSpawnPosition;
     [SerializeField] private Transform _secondSpawnPosition;
-    [SerializeField] private Transform _mainBuilding;
+    [SerializeField] private MainBuilding _mainBuilding;
 
     [SerializeField] private WaveData _testWave;
 
@@ -17,7 +16,6 @@ public class SpawnEnemySystem : MonoBehaviour
     {
         Enemies = new List<BaseEnemy>();
     }
-
 
     private void Start()
     {
@@ -59,8 +57,9 @@ public class SpawnEnemySystem : MonoBehaviour
                 GameObject enemy = Instantiate(enemyPrefab, points[index], Quaternion.identity);
                 BaseEnemy baseEnemy = enemy.GetComponent<BaseEnemy>();
 
-                baseEnemy.Initialize(waveEnemyData.EnemyData, _mainBuilding.position);
+                baseEnemy.Initialize(waveEnemyData.EnemyData, _mainBuilding);
                 Enemies.Add(baseEnemy);
+
                 yield return waitForSeconds;
             }
         }

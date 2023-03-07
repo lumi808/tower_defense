@@ -20,6 +20,7 @@ public class TowerUpgradeSystem : MonoBehaviour
         {
             _upgradableMap[currentSelected].Upgrade();
         }
+        SceneEventSystem.Instance.NotifyBalanceChanged(_upgradableMap[currentSelected].GetUpgradePrice());
     }
 
     public void RegisterTower(IMouseInteractable interactable, BaseTower tower)
@@ -33,5 +34,16 @@ public class TowerUpgradeSystem : MonoBehaviour
         {
             _upgradableMap.Add(interactable, upgradable);
         }
+    }
+
+    public float GetSelectedUpgradePrice()
+    {
+        IMouseInteractable currentSelected = _selectionSystem.CurrentSelected;
+        if (_upgradableMap.ContainsKey(currentSelected))
+        {
+            return _upgradableMap[currentSelected].GetUpgradePrice();
+        }
+
+        return 0f;
     }
 }

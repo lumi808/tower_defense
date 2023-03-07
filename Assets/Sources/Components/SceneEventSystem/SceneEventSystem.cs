@@ -1,5 +1,5 @@
-using UnityEngine;
 using System;
+using UnityEngine;
 
 public class SceneEventSystem : MonoBehaviour
 {
@@ -7,7 +7,7 @@ public class SceneEventSystem : MonoBehaviour
 
     private void Awake()
     {
-        if(Instance == null)
+        if (Instance == null)
         {
             Instance = this;
         }
@@ -25,30 +25,19 @@ public class SceneEventSystem : MonoBehaviour
     public event CellEvent CellUsed;
 
     public event EnemyEvent EnemyDied;
+
     public event Action OnUpgradeButtonPressed;
+    public event Action<float> BalanceChanged;
 
-    public void NotifyUpgradeButtonPressed()
-    {
-        OnUpgradeButtonPressed?.Invoke();
-    }
+    public void NotifyUpgradeButtonPressed() => OnUpgradeButtonPressed?.Invoke();
 
-    public void NotifyCellSelected(TowerCell towerCell)
-    {
-        CellSelected?.Invoke(towerCell);
-    }
+    public void NotifyCellSelected(TowerCell towerCell) => CellSelected?.Invoke(towerCell);
 
-    public void NotifyCellDeselected(TowerCell towerCell)
-    {
-        CellDeselected?.Invoke(towerCell);
-    }
+    public void NotifyCellDeselected(TowerCell towerCell) => CellDeselected?.Invoke(towerCell);
 
-    public void NotifyCellUsed(TowerCell towerCell)
-    {
-        CellUsed?.Invoke(towerCell);
-    }
+    public void NotifyCellUsed(TowerCell towerCell) => CellUsed?.Invoke(towerCell);
 
-    public void NotifyEnemyDied(BaseEnemy enemy)
-    {
-        EnemyDied?.Invoke(enemy);
-    }
+    public void NotifyEnemyDied(BaseEnemy enemy) => EnemyDied?.Invoke(enemy);
+
+    public void NotifyBalanceChanged(float currentBalance) => BalanceChanged?.Invoke(currentBalance);
 }

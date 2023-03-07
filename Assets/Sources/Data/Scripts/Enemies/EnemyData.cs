@@ -8,5 +8,6 @@ public class EnemyData : ScriptableObject
     public float Health;
     public float Damage;
     public float AttackRate;
+    public float ResourceReward;
     public GameObject Prefab;
 }

@@ -15,7 +15,7 @@ public class BaseTower : MonoBehaviour
     protected bool IsActive;
 
     [Header("Level Objects")]
-    [SerializeField] private GameObject[] _levelObjects;
+    [SerializeField] protected GameObject[] _levelObjects;
     [SerializeField] protected Transform _rotateElement;
 
     protected List<BaseEnemy> Enemies;

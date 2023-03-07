@@ -1,8 +1,11 @@
+using System;
 using UnityEngine;
 using UnityEngine.AI;
 
 public class BaseEnemy : MonoBehaviour
 {
+    public float ResourceReward { get; private set; }
+
     protected float Speed;
     protected float Health;
     protected float Damage;
@@ -30,6 +33,7 @@ public class BaseEnemy : MonoBehaviour
         Speed = enemyData.Speed;
         Health = enemyData.Health;
         Damage = enemyData.Damage;
+        ResourceReward = enemyData.ResourceReward;
         _attackRate = enemyData.AttackRate;
 
         _navMesh.SetDestination(destination);
@@ -44,14 +48,15 @@ public class BaseEnemy : MonoBehaviour
         Health -= damage;
         _healthBar.SetValue(Health);
 
-        if(Health <= 0)
+        if (Health <= 0)
         {
             Death();
         }
     }
 
-    public void Death()
+    private void Death()
     {
+        SceneEventSystem.Instance.NotifyEnemyDied(this);
         Destroy(gameObject);
     }
 }

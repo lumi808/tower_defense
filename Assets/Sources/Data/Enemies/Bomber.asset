@@ -15,6 +15,7 @@ MonoBehaviour:
   Name: Bomber
   Speed: 3
   Health: 100
-  Damage: 100
-  AttackRate: 0
+  Damage: 3
+  AttackRate: 2
+  ResourceReward: 10
   Prefab: {fileID: 3380191588315554151, guid: efeae89a322524b8d8bdc9b63cca6de3, type: 3}

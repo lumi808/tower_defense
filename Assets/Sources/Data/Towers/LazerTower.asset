@@ -22,19 +22,19 @@ MonoBehaviour:
     SellPrice: 80
     UpgradePrice: 200
     AttackRate: 200
-    Radius: 5
+    Radius: 9
     Prefab: {fileID: 0}
   - Name: Lazer Tower Level 1
-    BaseDamage: 0
+    BaseDamage: 155
     SellPrice: 0
     UpgradePrice: 0
     AttackRate: 0
-    Radius: 5
+    Radius: 9
     Prefab: {fileID: 0}
   - Name: Lazer Tower Level 2
-    BaseDamage: 0
+    BaseDamage: 255
     SellPrice: 0
     UpgradePrice: 0
     AttackRate: 0
-    Radius: 5
+    Radius: 9
     Prefab: {fileID: 0}

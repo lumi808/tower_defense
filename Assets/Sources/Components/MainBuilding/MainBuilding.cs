@@ -2,16 +2,9 @@ using UnityEngine;
 
 public class MainBuilding : MonoBehaviour
 {
-    [SerializeField] private float _testHealth;
-
     private float _health;
 
     [SerializeField] private HealthBar _healthBar;
-
-    private void Start()
-    {
-        Initialize(_testHealth);
-    }
 
     public void Initialize(float maxHealth)
     {

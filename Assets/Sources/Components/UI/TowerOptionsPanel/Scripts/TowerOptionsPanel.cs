@@ -1,9 +1,7 @@
 using UnityEngine;
 using UnityEngine.UI;
-using System;
 
 [RequireComponent(typeof(Animator))]
-
 public class TowerOptionsPanel : MonoBehaviour
 {
     [SerializeField] private Button _upgradeButton;
@@ -19,7 +17,7 @@ public class TowerOptionsPanel : MonoBehaviour
 
     private void Start()
     {
-        _upgradeButton.onClick.AddListener(NotifyEvent);
+        _upgradeButton.onClick.AddListener(NotyfiEvent);
         SceneEventSystem.Instance.BalanceChanged += OnBalanceChanged;
     }
 
@@ -33,7 +31,7 @@ public class TowerOptionsPanel : MonoBehaviour
         SetButtonsInteractivity();
     }
 
-    private void NotifyEvent()
+    private void NotyfiEvent()
     {
         SceneEventSystem.Instance.NotifyUpgradeButtonPressed();
     }
@@ -51,6 +49,6 @@ public class TowerOptionsPanel : MonoBehaviour
 
     private void SetButtonsInteractivity()
     {
-        _upgradeButton.interactable = ResourceSystem.HasEnoughMoney(_upgradeSystem.GetSelectedUpgradePrice());
+        _upgradeButton.interactable = _upgradeSystem.SelectedHasUpgrade() && ResourceSystem.HasEnoughMoney(_upgradeSystem.GetSelectedUpgradePrice());
     }
 }

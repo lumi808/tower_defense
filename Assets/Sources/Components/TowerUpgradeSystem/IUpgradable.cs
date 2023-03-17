@@ -1,10 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-
-public interface IUpgradable 
+public interface IUpgradable
 {
     void Upgrade();
     float GetUpgradePrice();
-}
 
+    bool HasUpgrade();
+}

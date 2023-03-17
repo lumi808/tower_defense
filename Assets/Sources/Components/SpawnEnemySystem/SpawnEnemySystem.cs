@@ -20,7 +20,7 @@ public class SpawnEnemySystem : MonoBehaviour
     private void Start()
     {
         SceneEventSystem.Instance.EnemyDied += OnEnemyDied;
-        SpawnWaveUnit(_testWave, 0.5f);
+        //SpawnWaveUnit(_testWave, 0.5f);
     }
 
     private void OnDestroy()
@@ -28,7 +28,7 @@ public class SpawnEnemySystem : MonoBehaviour
         SceneEventSystem.Instance.EnemyDied -= OnEnemyDied;
     }
 
-    private void OnEnemyDied(BaseEnemy enemy)
+    private void OnEnemyDied(BaseEnemy enemy, bool giveReward)
     {
         if (Enemies.Contains(enemy))
         {

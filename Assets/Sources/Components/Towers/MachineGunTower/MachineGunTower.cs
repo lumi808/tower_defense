@@ -18,7 +18,7 @@ public class MachineGunTower : BaseTower, IUpgradable
     public void Upgrade()
     {
         Level++;
-        UpgradeStats();
+        UpdateStats();
         ChangeLevelModel();
 
         SetCurrentFireEffect();
@@ -36,13 +36,13 @@ public class MachineGunTower : BaseTower, IUpgradable
 
     private void Update()
     {
-        if (AvailabeEnemies.Count == 0 || !IsActive)
+        if (AvailableEnemies.Count == 0 || !IsActive)
         {
             SetFireParticles(false);
             return;
         }
 
-        BaseEnemy target = AvailabeEnemies[0];
+        BaseEnemy target = AvailableEnemies[0];
 
         Vector3 toEnemyVector = target.transform.position - transform.position;
         toEnemyVector.y = 0;

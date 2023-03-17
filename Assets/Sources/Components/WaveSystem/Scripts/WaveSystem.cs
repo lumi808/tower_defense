@@ -10,9 +10,29 @@ public class WaveSystem : MonoBehaviour
     [SerializeField] private List<WaveData> _waveDataList;
     [SerializeField] private SpawnEnemySystem _spawnEnemySystem;
 
+    private Coroutine _waveCorotine;
+
     private void Start()
     {
-        StartCoroutine(WaveCycle());
+        SceneEventSystem.Instance.GameWin += OnWinOrLoose;
+        SceneEventSystem.Instance.GameLoose += OnWinOrLoose;
+    }
+
+    private void OnWinOrLoose()
+    {
+        SceneEventSystem.Instance.GameWin -= OnWinOrLoose;
+        SceneEventSystem.Instance.GameLoose -= OnWinOrLoose;
+
+        if (_waveCorotine != null)
+        {
+            StopCoroutine(_waveCorotine);
+        }
+    }
+
+    public void Initialize(List<WaveData> waveData)
+    {
+        _waveDataList = waveData;
+        _waveCorotine = StartCoroutine(WaveCycle());
     }
 
     private IEnumerator WaveCycle()
@@ -23,6 +43,8 @@ public class WaveSystem : MonoBehaviour
             _spawnEnemySystem.SpawnWaveUnit(wave, 0.15f);
             yield return WaitForAllEnemiesDie();
         }
+
+        SceneEventSystem.Instance.NotifyGameWin();
     }
 
     private IEnumerator TimerCycle(float time)
@@ -37,16 +59,12 @@ public class WaveSystem : MonoBehaviour
         {
             yield return waitOneSecond;
             _timer--;
-            // обновлять ui таймера
         }
     }
 
     private IEnumerator WaitForAllEnemiesDie()
     {
-        WaitForEndOfFrame waitForEndOfFrame = new WaitForEndOfFrame();
-        while (_spawnEnemySystem.Enemies.Count > 0)
-        {
-            yield return waitForEndOfFrame;
-        }
+        yield return new WaitForSeconds(15);
+        yield break;
     }
 }

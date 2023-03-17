@@ -2,6 +2,8 @@ using UnityEngine;
 
 public class TowerCell : MonoBehaviour, IMouseInteractable
 {
+    public int Id;
+
     [SerializeField] private Material _hoverMaterial;
     [SerializeField] private Material _defualMaterial;
     [SerializeField] private Material _selectedMaterial;
@@ -18,7 +20,7 @@ public class TowerCell : MonoBehaviour, IMouseInteractable
     #region IMouseInteractable methods
     public void OnClick()
     {
-        if(_selected == false)
+        if (_selected == false)
         {
             _meshRenderer.material = _selectedMaterial;
             _selected = true;
@@ -29,7 +31,7 @@ public class TowerCell : MonoBehaviour, IMouseInteractable
 
     public void OnHoverEnter()
     {
-        if(_selected == false)
+        if (_selected == false)
         {
             _meshRenderer.material = _hoverMaterial;
         }
@@ -37,7 +39,7 @@ public class TowerCell : MonoBehaviour, IMouseInteractable
 
     public void OnHoverExit()
     {
-        if(_selected == false)
+        if (_selected == false)
         {
             _meshRenderer.material = _defualMaterial;
         }

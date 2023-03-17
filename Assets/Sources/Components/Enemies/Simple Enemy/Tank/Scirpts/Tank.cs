@@ -6,6 +6,9 @@ public class Tank : BaseEnemy
 
     private void Update()
     {
+        if (!_isAttacking)
+            return;
+
         if (_enemyState == EnemyState.Move)
         {
             if (_navMesh.remainingDistance < 5)
@@ -16,11 +19,7 @@ public class Tank : BaseEnemy
         }
         else
         {
-            if (Time.time >= _nextTimeAttack)
-            {
-                Attack();
-                _nextTimeAttack = Time.time + 1 / _attackRate;
-            }
+            Attack();
         }
     }
 
@@ -28,5 +27,7 @@ public class Tank : BaseEnemy
     {
         if (_mainBuilding)
             _mainBuilding.GetDamage(Damage);
+
+        Death(false);
     }
 }

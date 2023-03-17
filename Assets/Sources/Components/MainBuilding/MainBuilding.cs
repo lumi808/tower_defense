@@ -2,9 +2,10 @@ using UnityEngine;
 
 public class MainBuilding : MonoBehaviour
 {
-    private float _health;
+    [SerializeField] private float _health;
 
     [SerializeField] private HealthBar _healthBar;
+
 
     public void Initialize(float maxHealth)
     {

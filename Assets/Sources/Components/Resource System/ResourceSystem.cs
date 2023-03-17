@@ -39,9 +39,15 @@ public class ResourceSystem : MonoBehaviour
         SceneEventSystem.Instance.EnemyDied -= OnEnemyDied;
     }
 
-    private void OnEnemyDied(BaseEnemy enemy)
+    private void OnEnemyDied(BaseEnemy enemy, bool giveReward)
     {
-        Balance += enemy.ResourceReward;
+        if (giveReward)
+            Balance += enemy.ResourceReward;
+    }
+
+    public static void Initialize(float startBalance)
+    {
+        _instance.Balance = startBalance;
     }
 
     public static bool HasEnoughMoney(float count)

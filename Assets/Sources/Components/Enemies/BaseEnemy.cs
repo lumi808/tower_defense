@@ -13,6 +13,7 @@ public class BaseEnemy : MonoBehaviour
     protected NavMeshAgent _navMesh;
     protected float _attackRate;
     protected MainBuilding _mainBuilding;
+    protected bool _isAttacking = false;
 
     [SerializeField] protected EnemyState _enemyState;
     private HealthBar _healthBar;
@@ -27,6 +28,7 @@ public class BaseEnemy : MonoBehaviour
     {
         _navMesh = GetComponent<NavMeshAgent>();
         _healthBar = GetComponentInChildren<HealthBar>();
+        _isAttacking = true;
     }
 
     public void Initialize(EnemyData enemyData, MainBuilding mainBuilding)
@@ -52,13 +54,14 @@ public class BaseEnemy : MonoBehaviour
 
         if (Health <= 0)
         {
-            Death();
+            Death(true);
         }
     }
 
-    private void Death()
+    protected void Death(bool giveReward)
     {
-        SceneEventSystem.Instance.NotifyEnemyDied(this);
+        _isAttacking = false;
+        SceneEventSystem.Instance.NotifyEnemyDied(this, giveReward);
         Destroy(gameObject);
     }
 }

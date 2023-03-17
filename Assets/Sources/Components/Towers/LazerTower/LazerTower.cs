@@ -1,8 +1,7 @@
-using System.Collections;
-using System.Collections.Generic;
+using System;
 using UnityEngine;
 
-public class LazerTower : BaseTower, IUpgradable
+public class LaserTower : BaseTower, IUpgradable
 {
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private LineRenderer _lineRenderer;
@@ -10,21 +9,19 @@ public class LazerTower : BaseTower, IUpgradable
     public void Upgrade()
     {
         Level++;
-        UpgradeStats();
+        UpdateStats();
         ChangeLevelModel();
     }
 
     private void Update()
     {
-        if(AvailabeEnemies.Count == 0 || !IsActive)
-        {
+        if (AvailableEnemies.Count == 0 || !IsActive)
             return;
-        }
 
-        BaseEnemy target = AvailabeEnemies[0];
-        if(target == null)
+        BaseEnemy target = AvailableEnemies[0];
+        if (target == null)
         {
-            AvailabeEnemies.RemoveAt(0);
+            AvailableEnemies.RemoveAt(0);
             return;
         }
 

@@ -11,19 +11,19 @@ public class MissleTower : BaseTower, IUpgradable
     public void Upgrade()
     {
         Level++;
-        UpgradeStats();
+        UpdateStats();
         ChangeLevelModel();
     }
 
     private void Update()
     {
-        if (AvailabeEnemies.Count == 0 || !IsActive)
+        if (AvailableEnemies.Count == 0 || !IsActive)
             return;
 
-        BaseEnemy target = AvailabeEnemies[0];
+        BaseEnemy target = AvailableEnemies[0];
         if (target == null)
         {
-            AvailabeEnemies.RemoveAt(0);
+            AvailableEnemies.RemoveAt(0);
             return;
         }
 

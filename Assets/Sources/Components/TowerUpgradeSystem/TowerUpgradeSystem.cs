@@ -10,25 +10,13 @@ public class TowerUpgradeSystem : MonoBehaviour
 
     private void Start()
     {
-        SceneEventSystem.Instance.OnUpgradeButtonPressed += onUpgradeButtonPressed;
-    }
-
-    private void onUpgradeButtonPressed()
-    {
-        IMouseInteractable currentSelected = _selectionSystem.CurrentSelected;
-        if (_upgradableMap.ContainsKey(currentSelected))
-        {
-            _upgradableMap[currentSelected].Upgrade();
-        }
-        SceneEventSystem.Instance.NotifyBalanceChanged(_upgradableMap[currentSelected].GetUpgradePrice());
+        SceneEventSystem.Instance.OnUpgradeButtonPressed += OnUpgradeButtonPressed;
     }
 
     public void RegisterTower(IMouseInteractable interactable, BaseTower tower)
     {
         if (_upgradableMap == null)
-        {
             _upgradableMap = new Dictionary<IMouseInteractable, IUpgradable>();
-        }
 
         if (tower is IUpgradable upgradable)
         {
@@ -36,14 +24,39 @@ public class TowerUpgradeSystem : MonoBehaviour
         }
     }
 
+    public bool SelectedHasUpgrade()
+    {
+        IMouseInteractable currentSelected = _selectionSystem.CurrentSelected;
+        if (currentSelected == null)
+            return false;
+
+        return _upgradableMap.ContainsKey(currentSelected) && _upgradableMap[currentSelected].HasUpgrade();
+    }
+
     public float GetSelectedUpgradePrice()
     {
         IMouseInteractable currentSelected = _selectionSystem.CurrentSelected;
+        if (currentSelected == null)
+            return 0;
+
         if (_upgradableMap.ContainsKey(currentSelected))
         {
             return _upgradableMap[currentSelected].GetUpgradePrice();
         }
 
         return 0f;
+    }
+
+    private void OnUpgradeButtonPressed()
+    {
+        // 1. Взять IUpgradable, которая сейчас выделена
+        // 2. Вызвать функцию улучшение
+
+        IMouseInteractable currentSelected = _selectionSystem.CurrentSelected;
+        if (_upgradableMap.ContainsKey(currentSelected))
+        {
+            _upgradableMap[currentSelected].Upgrade();
+            SceneEventSystem.Instance.NotifyBalanceChanged(_upgradableMap[currentSelected].GetUpgradePrice());
+        }
     }
 }

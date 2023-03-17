@@ -19,46 +19,43 @@ public class BaseTower : MonoBehaviour
     [SerializeField] protected Transform _rotateElement;
 
     protected List<BaseEnemy> Enemies;
-    protected List<BaseEnemy> AvailabeEnemies;
+    protected List<BaseEnemy> AvailableEnemies;
+    protected int CellId;
 
-    public void Initialze(TowerData towerData, List<BaseEnemy> enemies)
+    public void Initialze(TowerData towerData, List<BaseEnemy> enemies, int cellId)
     {
         Level = 0;
         TowerData = towerData;
         Enemies = enemies;
-        AvailabeEnemies = new List<BaseEnemy>();
-        UpgradeStats();
+        CellId = cellId;
+        AvailableEnemies = new List<BaseEnemy>();
+        UpdateStats();
     }
 
-    public void SetTowerActive(bool isActive)
-    {
-        IsActive = isActive;
-    }
+    public void SetTowerActive(bool isActive) => IsActive = isActive;
 
     private void FixedUpdate()
     {
         if (!IsActive)
-        {
             return;
-        }
 
         FindEnemies();
     }
 
     protected void FindEnemies()
     {
-        AvailabeEnemies.Clear();
-        for(int i = 0; i < Enemies.Count; i++)
+        AvailableEnemies.Clear();
+        for (int i = 0; i < Enemies.Count; i++)
         {
             float distance = Vector3.Distance(transform.position, Enemies[i].transform.position);
-            if(distance < Radius)
+            if (distance < Radius)
             {
-                AvailabeEnemies.Add(Enemies[i]);
+                AvailableEnemies.Add(Enemies[i]);
             }
-        } 
+        }
     }
 
-    protected void UpgradeStats()
+    protected void UpdateStats()
     {
         TowerData.TowerLevelInfo levelInfo = TowerData.UpdageInfo[Level];
         Name = levelInfo.Name;
@@ -73,7 +70,8 @@ public class BaseTower : MonoBehaviour
     {
         for (int i = 0; i < _levelObjects.Length; i++)
         {
-            _levelObjects[i].SetActive(i == Level);
+            bool isRightLevel = i == Level;
+            _levelObjects[i].SetActive(isRightLevel);
         }
     }
 
@@ -81,5 +79,20 @@ public class BaseTower : MonoBehaviour
     {
         TowerData.TowerLevelInfo levelInfo = TowerData.UpdageInfo[Level];
         return levelInfo.UpgradePrice;
+    }
+
+    public bool HasUpgrade()
+    {
+        return Level + 1 < TowerData.UpdageInfo.Count;
+    }
+
+    public TowerSaveInfo GetSaveInfo()
+    {
+        TowerSaveInfo info = new TowerSaveInfo();
+        info.Level = Level;
+        info.TowerType = TowerData.TypeOfTower;
+        info.CellId = CellId;
+
+        return info;
     }
 }

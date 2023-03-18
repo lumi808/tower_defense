@@ -23,16 +23,16 @@ public class BuildSystem : MonoBehaviour
         }
     }
     
-    public List<TowerSaveInfo> GetSaveInfo()
-    {
-        List<TowerSaveInfo> saveInfo = new List<TowerSaveInfo>();
-        foreach (BaseTower tower in _towers)
-        {
-            saveInfo.Add(tower.GetSaveInfo());
-        }
-
-        return saveInfo;
-    }
+    //public List<TowerSaveInfo> GetSaveInfo()
+    //{
+    //    List<TowerSaveInfo> saveInfo = new List<TowerSaveInfo>();
+    //    foreach (BaseTower tower in _towers)
+    //    {
+    //        saveInfo.Add(tower.GetSaveInfo());
+    //    }
+    //
+    //    return saveInfo;
+    //}
 
     public void BuildTower(TowerData.TowerType towerType)
     {

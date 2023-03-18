@@ -14,8 +14,8 @@ public class Game : MonoBehaviour
     [Header("References")]
     [SerializeField] private MainBuilding _mainBuildings;
     [SerializeField] private WaveSystem _waveSystem;
-    [SerializeField] private ReturnScreen _looseScreen;
-    [SerializeField] private ReturnScreen _winScreen;
+    //SerializeField] private ReturnScreen _looseScreen;
+    //[SerializeField] private ReturnScreen _winScreen;
 
     private void Start()
     {
@@ -31,11 +31,11 @@ public class Game : MonoBehaviour
 
     private void OnGameWin()
     {
-        _winScreen.Show();
+        //_winScreen.Show();
     }
 
     private void OnGameLoose()
     {
-        _looseScreen.Show();
+        //_looseScreen.Show();
     }
 }

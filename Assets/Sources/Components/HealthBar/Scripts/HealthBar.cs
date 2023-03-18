@@ -4,7 +4,7 @@ using UnityEngine.UI;
 public class HealthBar : MonoBehaviour
 {
     private Slider _slider;
-    private Transform _cameraTransform;
+    [SerializeField]private Transform _cameraTransform;
 
     private void Awake()
     {

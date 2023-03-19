@@ -1,3 +1,4 @@
+using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
@@ -8,6 +9,8 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private Button _loadGameButton;
     [SerializeField] private Button _easyGameButton;
     [SerializeField] private Button _hardGameButton;
+    [SerializeField] private TextMeshProUGUI _easyGameText;
+    [SerializeField] private TextMeshProUGUI _hardGameText;
 
     private void Awake()
     {
@@ -35,15 +38,15 @@ public class MainMenu : MonoBehaviour
     private void SetHardGame()
     {
         PlayerPrefs.SetInt(Game.KEY, 1);
-        _easyGameButton.image.color = Color.white;
-        _hardGameButton.image.color = Color.green;
+        _hardGameText.fontStyle = FontStyles.Bold;
+        _easyGameText.fontStyle = FontStyles.Normal;
     }
 
     private void SetEasyGame()
     {
         PlayerPrefs.SetInt(Game.KEY, 0);
-        _hardGameButton.image.color = Color.white;
-        _easyGameButton.image.color = Color.green;
+        _hardGameText.fontStyle = FontStyles.Normal;
+        _easyGameText.fontStyle = FontStyles.Bold;
     }
 
     private void StartGame()

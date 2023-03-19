@@ -15,19 +15,19 @@ MonoBehaviour:
   TypeOfTower: 0
   Icon: {fileID: 21300000, guid: c1d242a932a3c44739c99afa51c07469, type: 3}
   TowerPrefab: {fileID: 6111855650805448795, guid: d9821ae665e2e4626b7e2ef397b36539, type: 3}
-  UpgradeCount: 0
+  UpgradeCount: 3
   UpdageInfo:
   - Name: Lazer Tower Level 0
     BaseDamage: 85
-    SellPrice: 80
-    UpgradePrice: 200
+    SellPrice: 0
+    UpgradePrice: 100
     AttackRate: 200
     Radius: 9
     Prefab: {fileID: 0}
   - Name: Lazer Tower Level 1
     BaseDamage: 155
     SellPrice: 0
-    UpgradePrice: 200
+    UpgradePrice: 150
     AttackRate: 250
     Radius: 12
     Prefab: {fileID: 0}

@@ -15,7 +15,7 @@ MonoBehaviour:
   TypeOfTower: 1
   Icon: {fileID: 21300000, guid: ff44d8b17665c4de9966f9f771db354f, type: 3}
   TowerPrefab: {fileID: 9028846301889302618, guid: 01d0fd53b21504e0c8f4dbcdb030f52f, type: 3}
-  UpgradeCount: 0
+  UpgradeCount: 3
   UpdageInfo:
   - Name: MachineGun Level 0
     BaseDamage: 100

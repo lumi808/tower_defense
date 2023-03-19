@@ -2,8 +2,9 @@ using UnityEngine;
 
 public class MainBuilding : MonoBehaviour
 {
-    [SerializeField] private float _health;
+    public float Health => _health;
 
+    [SerializeField] private float _health;
     [SerializeField] private HealthBar _healthBar;
 
 
@@ -28,5 +29,6 @@ public class MainBuilding : MonoBehaviour
     private void GameOver()
     {
         Destroy(gameObject);
+        SceneEventSystem.Instance.NotifyGameLoose();
     }
 }

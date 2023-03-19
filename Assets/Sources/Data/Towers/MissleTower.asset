@@ -18,7 +18,7 @@ MonoBehaviour:
   UpgradeCount: 3
   UpdageInfo:
   - Name: MissleTower Level 0
-    BaseDamage: 45
+    BaseDamage: 50
     SellPrice: 0
     UpgradePrice: 0
     AttackRate: 1
@@ -27,14 +27,14 @@ MonoBehaviour:
   - Name: MissleTower Level 1
     BaseDamage: 55
     SellPrice: 0
-    UpgradePrice: 0
-    AttackRate: 1
-    Radius: 9
+    UpgradePrice: 75
+    AttackRate: 2
+    Radius: 12
     Prefab: {fileID: 0}
   - Name: MissleTower Level 2
     BaseDamage: 65
     SellPrice: 0
-    UpgradePrice: 0
-    AttackRate: 1
-    Radius: 9
+    UpgradePrice: 100
+    AttackRate: 3
+    Radius: 15
     Prefab: {fileID: 0}

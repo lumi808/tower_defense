@@ -10,14 +10,19 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 9038c01317663468e91f98f71ad19eea, type: 3}
-  m_Name: EasyLevel
+  m_Name: HardLevel
   m_EditorClassIdentifier: 
-  Name: Easy
+  Name: Hard
   WaveData:
   - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
   - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
   - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
   - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
   - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  StartBalance: 150
-  MainBuildingHealth: 350
+  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
+  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
+  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
+  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
+  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
+  StartBalance: 80
+  MainBuildingHealth: 200

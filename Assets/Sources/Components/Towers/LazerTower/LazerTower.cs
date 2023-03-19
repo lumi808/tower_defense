@@ -1,7 +1,7 @@
 using System;
 using UnityEngine;
 
-public class LaserTower : BaseTower, IUpgradable
+public class LazerTower : BaseTower, IUpgradable
 {
     [SerializeField] private Transform _attackPoint;
     [SerializeField] private LineRenderer _lineRenderer;

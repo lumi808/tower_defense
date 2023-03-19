@@ -36,6 +36,18 @@ public class SpawnEnemySystem : MonoBehaviour
         }
     }
 
+    public List<EnemySaveInfo> GetSaveInfo()
+    {
+        List<EnemySaveInfo> saveInfo = new List<EnemySaveInfo>();
+
+        foreach (BaseEnemy enemy in Enemies)
+        {
+            saveInfo.Add(enemy.GetSaveInfo());
+        }
+
+        return saveInfo;
+    }
+
     public void SpawnWaveUnit(WaveData waveData, float tickTime)
     {
         StartCoroutine(SpawnEnemiesInTime(waveData, tickTime));

@@ -7,6 +7,8 @@ public class Game : MonoBehaviour
 {
     public const string KEY = "GameConfigOption";
 
+    public bool IsEasyGame;
+
     [Header("Configs")]
     [SerializeField] private GameConfigData _easyConfig;
     [SerializeField] private GameConfigData _hardConfig;
@@ -14,28 +16,33 @@ public class Game : MonoBehaviour
     [Header("References")]
     [SerializeField] private MainBuilding _mainBuildings;
     [SerializeField] private WaveSystem _waveSystem;
-    //SerializeField] private ReturnScreen _looseScreen;
-    //[SerializeField] private ReturnScreen _winScreen;
+    [SerializeField] private ReturnScreen _looseScreen;
+    [SerializeField] private ReturnScreen _winScreen;
+
+    public GameConfigData GetCurrentConfig() 
+    {
+        return IsEasyGame ? _easyConfig : _hardConfig;
+    }
 
     private void Start()
     {
         SceneEventSystem.Instance.GameLoose += OnGameLoose;
         SceneEventSystem.Instance.GameWin += OnGameWin;
         
-        bool isEasyConfig = PlayerPrefs.GetInt(KEY) == 0;
+        IsEasyGame = PlayerPrefs.GetInt(KEY) == 0;
 
-        _mainBuildings.Initialize(isEasyConfig ? _easyConfig.MainBuildingHealth : _hardConfig.MainBuildingHealth);
-        _waveSystem.Initialize(isEasyConfig ? _easyConfig.WaveData : _hardConfig.WaveData);
-        ResourceSystem.Initialize(isEasyConfig ? _easyConfig.StartBalance : _hardConfig.StartBalance);
+        _mainBuildings.Initialize(GetCurrentConfig().MainBuildingHealth);
+        _waveSystem.Initialize(GetCurrentConfig().WaveData);
+        ResourceSystem.Initialize(GetCurrentConfig().StartBalance);
     }
 
     private void OnGameWin()
     {
-        //_winScreen.Show();
+        _winScreen.Show();
     }
 
     private void OnGameLoose()
     {
-        //_looseScreen.Show();
+        _looseScreen.Show();
     }
 }

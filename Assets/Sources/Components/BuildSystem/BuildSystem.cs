@@ -23,22 +23,21 @@ public class BuildSystem : MonoBehaviour
         }
     }
     
-    //public List<TowerSaveInfo> GetSaveInfo()
-    //{
-    //    List<TowerSaveInfo> saveInfo = new List<TowerSaveInfo>();
-    //    foreach (BaseTower tower in _towers)
-    //    {
-    //        saveInfo.Add(tower.GetSaveInfo());
-    //    }
-    //
-    //    return saveInfo;
-    //}
+    public List<TowerSaveInfo> GetSaveInfo()
+    {
+        List<TowerSaveInfo> saveInfo = new List<TowerSaveInfo>();
+        foreach (BaseTower tower in _towers)
+        {
+            saveInfo.Add(tower.GetSaveInfo());
+        }
+    
+        return saveInfo;
+    }
 
     public void BuildTower(TowerData.TowerType towerType)
     {
         IMouseInteractable currentSelected = _selectionSystem.CurrentSelected;
 
-        // если currentSelected это тип TowerCell
         if (currentSelected is TowerCell cell)
         {
             if (cell.IsCellUsed())
@@ -67,11 +66,6 @@ public class BuildSystem : MonoBehaviour
 
     private IEnumerator BuildTowerInTime(GameObject tower, float duration, BaseTower baseTower)
     {
-        // увеличивать башню до необходимого размера в течени duration времени
-
-        // 1. Определяем время окончания "анимация"
-        // 2. Каждый кадр выставляем размер башни
-
         float startTime = Time.time;
         float endTime = startTime + duration;
 
@@ -80,7 +74,6 @@ public class BuildSystem : MonoBehaviour
 
         while (Time.time < endTime)
         {
-            // 0..1
             float lerp = (Time.time - startTime) / duration;
             float size = Mathf.Lerp(startSize, endSize, lerp);
 

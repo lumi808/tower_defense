@@ -6,6 +6,7 @@ public class BaseEnemy : MonoBehaviour
 {
     public float ResourceReward { get; private set; }
 
+    protected string Name;
     protected float Speed;
     protected float Health;
     protected float Damage;
@@ -36,6 +37,7 @@ public class BaseEnemy : MonoBehaviour
         Speed = enemyData.Speed;
         Health = enemyData.Health;
         Damage = enemyData.Damage;
+        Name = enemyData.Name;
         ResourceReward = enemyData.ResourceReward;
         _attackRate = enemyData.AttackRate;
         _mainBuilding = mainBuilding;
@@ -56,6 +58,16 @@ public class BaseEnemy : MonoBehaviour
         {
             Death(true);
         }
+    }
+
+    public EnemySaveInfo GetSaveInfo()
+    {
+        EnemySaveInfo saveInfo = new EnemySaveInfo();
+        saveInfo.Health = Health;
+        saveInfo.Name = Name;
+        saveInfo.Position = transform.position;
+
+        return saveInfo;
     }
 
     protected void Death(bool giveReward)

@@ -18,23 +18,23 @@ MonoBehaviour:
   UpgradeCount: 0
   UpdageInfo:
   - Name: MachineGun Level 0
-    BaseDamage: 0
+    BaseDamage: 100
     SellPrice: 0
-    UpgradePrice: 0
-    AttackRate: 0
-    Radius: 5
+    UpgradePrice: 50
+    AttackRate: 100
+    Radius: 9
     Prefab: {fileID: 0}
   - Name: MachineGun Level 1
-    BaseDamage: 0
+    BaseDamage: 150
     SellPrice: 0
-    UpgradePrice: 0
-    AttackRate: 0
-    Radius: 5
+    UpgradePrice: 75
+    AttackRate: 120
+    Radius: 12
     Prefab: {fileID: 0}
   - Name: MachineGun Level 2
-    BaseDamage: 0
+    BaseDamage: 200
     SellPrice: 0
-    UpgradePrice: 0
-    AttackRate: 0
-    Radius: 5
+    UpgradePrice: 100
+    AttackRate: 150
+    Radius: 15
     Prefab: {fileID: 0}

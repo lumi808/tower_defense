@@ -5,6 +5,8 @@ using UnityEngine;
 
 public class WaveSystem : MonoBehaviour
 {
+    public int CurrentWaveIndex;
+
     [SerializeField] private float _timeBetweenWaves;
     [SerializeField] private float _timer;
     [SerializeField] private List<WaveData> _waveDataList;
@@ -37,10 +39,13 @@ public class WaveSystem : MonoBehaviour
 
     private IEnumerator WaveCycle()
     {
+        CurrentWaveIndex = 0;
+
         foreach (WaveData wave in _waveDataList)
         {
             yield return TimerCycle(_timeBetweenWaves);
             _spawnEnemySystem.SpawnWaveUnit(wave, 0.15f);
+            CurrentWaveIndex++;
             yield return WaitForAllEnemiesDie();
         }
 

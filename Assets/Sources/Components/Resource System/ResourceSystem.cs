@@ -2,6 +2,7 @@ using UnityEngine;
 
 public class ResourceSystem : MonoBehaviour
 {
+    public static float GameBalance => _instance.Balance;
     private static ResourceSystem _instance;
 
     public float Balance

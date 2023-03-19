@@ -86,13 +86,13 @@ public class BaseTower : MonoBehaviour
         return Level + 1 < TowerData.UpdageInfo.Count;
     }
 
-    //public TowerSaveInfo GetSaveInfo()
-    //{
-    //    TowerSaveInfo info = new TowerSaveInfo();
-    //    info.Level = Level;
-    //    info.TowerType = TowerData.TypeOfTower;
-    //    info.CellId = CellId;
-    //
-    //    return info;
-    //}
+    public TowerSaveInfo GetSaveInfo()
+    {
+        TowerSaveInfo info = new TowerSaveInfo();
+        info.Level = Level;
+        info.TowerType = TowerData.TypeOfTower;
+        info.CellId = CellId;
+    
+        return info;
+    }
 }

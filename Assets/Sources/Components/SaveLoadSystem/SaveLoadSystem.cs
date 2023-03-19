@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
 using UnityEngine;
+using Debug = UnityEngine.Debug;
 
 public class SaveLoadSystem : MonoBehaviour
 {
@@ -12,10 +13,9 @@ public class SaveLoadSystem : MonoBehaviour
     [SerializeField] private Game _game;
     [SerializeField] private WaveSystem _waveSystem;
 
-    private void Update()
+    private void Start()
     {
-        if (Input.GetKey(KeyCode.Space))
-            SaveGame();
+        Application.quitting += SaveGame;
     }
 
     public void SaveGame()
@@ -35,13 +35,31 @@ public class SaveLoadSystem : MonoBehaviour
 
         string serializedData = JsonUtility.ToJson(saveInfo);
         File.WriteAllText(GetSavePath(), serializedData);
-
-        Process.Start(GetSavePath());
     }
 
     public void LoadGame()
     {
+        if (!File.Exists(GetSavePath()))
+        {
+            Debug.LogError("Cant find file");
+            return;
+        }
 
+        string serializedData = File.ReadAllText(GetSavePath());
+        GameSaveInfo saveInfo = JsonUtility.FromJson<GameSaveInfo>(serializedData);
+
+        if (saveInfo == null)
+        {
+            Debug.LogError("Cant deserialized save file");
+            return;
+        }
+
+        _buildSystem.LoadTowers(saveInfo.Towers);
+        _spawnEnemySystem.LoadEnemis(saveInfo.Enemies);
+        _game.IsEasyGame = saveInfo.IsEasyGame;
+        _mainBuilding.Initialize(saveInfo.MainBuildingHealth, _game.GetCurrentConfig().MainBuildingHealth);
+        _waveSystem.Initialize(_game.GetCurrentConfig().WaveData, saveInfo.CurrentWaveIndex);
+        ResourceSystem.Initialize(saveInfo.Balance);
     }
 
     private string GetSaveDirectory()

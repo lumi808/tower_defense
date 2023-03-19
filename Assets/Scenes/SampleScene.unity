@@ -1364,7 +1364,7 @@ MonoBehaviour:
   _firstSpawnPosition: {fileID: 792882764}
   _secondSpawnPosition: {fileID: 619055273}
   _mainBuilding: {fileID: 1741145465}
-  _testWave: {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
+  _enemyLibrary: {fileID: 11400000, guid: 0e6285959535e4606b31732063360c9f, type: 2}
 --- !u!114 &326691333
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1431,6 +1431,7 @@ MonoBehaviour:
   _waveSystem: {fileID: 326691335}
   _looseScreen: {fileID: 1270564254}
   _winScreen: {fileID: 813325664}
+  _saveLoadSystem: {fileID: 326691337}
 --- !u!114 &326691337
 MonoBehaviour:
   m_ObjectHideFlags: 0

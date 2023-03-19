@@ -10,12 +10,21 @@ public class BuildSystem : MonoBehaviour
     [SerializeField] private SpawnEnemySystem _spawnEnemySystem;
 
     private Dictionary<TowerData.TowerType, TowerData> _towerDataMap;
+    private Dictionary<int, TowerCell> _towerCells;
     private List<BaseTower> _towers;
 
     private void Awake()
     {
         _towerDataMap = new Dictionary<TowerData.TowerType, TowerData>();
+        _towerCells = new Dictionary<int, TowerCell>();
         _towers = new List<BaseTower>();
+
+        TowerCell[] cellInScene = FindObjectsOfType<TowerCell>();
+
+        foreach(TowerCell towerCell in cellInScene)
+        {
+            _towerCells.Add(towerCell.Id, towerCell);
+        }
 
         foreach (TowerData towerData in _towerLibrary.Library)
         {
@@ -61,6 +70,31 @@ public class BuildSystem : MonoBehaviour
             cell.UseCell();
             _towers.Add(baseTower);
             ResourceSystem.SpendMoney(baseTower.GetUpgradePrice());
+        }
+    }
+
+    public void LoadTowers(List<TowerSaveInfo> saveTowers)
+    {
+        foreach(TowerSaveInfo towerSave in saveTowers)
+        {
+            TowerCell cell = _towerCells[towerSave.CellId];
+            TowerData.TowerType towerType = towerSave.TowerType;
+
+            GameObject prefab = _towerDataMap[towerType].TowerPrefab;
+            Vector3 position = cell.transform.position;
+            GameObject tower = Instantiate(prefab, position, Quaternion.identity);
+            BaseTower baseTower = tower.GetComponent<BaseTower>();
+
+            if (baseTower != null)
+            {
+                baseTower.Initialze(_towerDataMap[towerType], _spawnEnemySystem.Enemies, cell.Id);
+            }
+
+            baseTower.SetTowerActive(true);
+
+            _upgradeSystem.RegisterTower(cell, baseTower);
+            cell.UseCell();
+            _towers.Add(baseTower);
         }
     }
 

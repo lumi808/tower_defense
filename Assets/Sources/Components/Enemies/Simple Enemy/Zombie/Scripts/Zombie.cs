@@ -16,13 +16,17 @@ public class Zombie : BaseEnemy
 
         if (_enemyState == EnemyState.Move)
         {
+            if (!_navMesh.hasPath)
+                return;
+
+            _animationController.Walking();
+
             if (_navMesh.remainingDistance < 5)
             {
                 _navMesh.isStopped = true;
                 _enemyState = EnemyState.Attack;
             }
 
-            _animationController.Walking();
         }
         else
         {

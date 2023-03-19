@@ -3,8 +3,8 @@ using UnityEngine;
 
 public class LazerTower : BaseTower, IUpgradable
 {
-    [SerializeField] private Transform _attackPoint;
-    [SerializeField] private LineRenderer _lineRenderer;
+    [SerializeField] private Transform[] _attackPoint;
+    [SerializeField] private LineRenderer[] _lineRenderer;
 
     public void Upgrade()
     {
@@ -16,7 +16,10 @@ public class LazerTower : BaseTower, IUpgradable
     private void Update()
     {
         if (AvailableEnemies.Count == 0 || !IsActive)
+        {
+            _lineRenderer[Level].SetPosition(1, Vector3.zero);
             return;
+        }
 
         BaseEnemy target = AvailableEnemies[0];
         if (target == null)
@@ -25,8 +28,8 @@ public class LazerTower : BaseTower, IUpgradable
             return;
         }
 
-        Vector3 localPoint = _attackPoint.transform.InverseTransformPoint(target.transform.position);
-        _lineRenderer.SetPosition(1, localPoint);
+        Vector3 localPoint = _attackPoint[Level].transform.InverseTransformPoint(target.transform.position);
+        _lineRenderer[Level].SetPosition(1, localPoint);
 
         Vector3 toEnemyVector = target.transform.position - transform.position;
         toEnemyVector.y = 0;

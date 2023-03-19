@@ -32,10 +32,10 @@ public class BaseEnemy : MonoBehaviour
         _isAttacking = true;
     }
 
-    public void Initialize(EnemyData enemyData, MainBuilding mainBuilding)
+    public void Initialize(EnemyData enemyData, MainBuilding mainBuilding, float health)
     {
         Speed = enemyData.Speed;
-        Health = enemyData.Health;
+        Health = health;
         Damage = enemyData.Damage;
         Name = enemyData.Name;
         ResourceReward = enemyData.ResourceReward;
@@ -45,7 +45,7 @@ public class BaseEnemy : MonoBehaviour
         _navMesh.SetDestination(mainBuilding.transform.position);
         _enemyState = EnemyState.Move;
 
-        _healthBar.Initialize(0, Health);
+        _healthBar.Initialize(0, enemyData.Health);
         _healthBar.SetValue(Health);
     }
 

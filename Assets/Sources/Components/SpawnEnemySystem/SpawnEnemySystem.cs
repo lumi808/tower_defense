@@ -10,7 +10,7 @@ public class SpawnEnemySystem : MonoBehaviour
     [SerializeField] private Transform _secondSpawnPosition;
     [SerializeField] private MainBuilding _mainBuilding;
 
-    [SerializeField] private WaveData _testWave;
+    [SerializeField] private EnemyLibrary _enemyLibrary;
 
     private void Awake()
     {
@@ -48,6 +48,26 @@ public class SpawnEnemySystem : MonoBehaviour
         return saveInfo;
     }
 
+    public void LoadEnemis(List<EnemySaveInfo> savedEnemies)
+    {
+        Dictionary<string, EnemyData> _enemiesMap = new Dictionary<string, EnemyData>();
+
+        foreach (EnemyData enemyData in _enemyLibrary.Enemies)
+        {
+            _enemiesMap.Add(enemyData.Name, enemyData);
+        }
+
+        foreach (EnemySaveInfo savedEnemy in savedEnemies)
+        {
+            GameObject enemyPrefab = _enemiesMap[savedEnemy.Name].Prefab;
+            GameObject enemy = Instantiate(enemyPrefab, savedEnemy.Position, Quaternion.identity);
+            BaseEnemy baseEnemy = enemy.GetComponent<BaseEnemy>();
+
+            baseEnemy.Initialize(_enemiesMap[savedEnemy.Name], _mainBuilding, savedEnemy.Health);
+            Enemies.Add(baseEnemy);
+        }
+    }
+
     public void SpawnWaveUnit(WaveData waveData, float tickTime)
     {
         StartCoroutine(SpawnEnemiesInTime(waveData, tickTime));
@@ -69,7 +89,7 @@ public class SpawnEnemySystem : MonoBehaviour
                 GameObject enemy = Instantiate(enemyPrefab, points[index], Quaternion.identity);
                 BaseEnemy baseEnemy = enemy.GetComponent<BaseEnemy>();
 
-                baseEnemy.Initialize(waveEnemyData.EnemyData, _mainBuilding);
+                baseEnemy.Initialize(waveEnemyData.EnemyData, _mainBuilding, waveEnemyData.EnemyData.Health);
                 Enemies.Add(baseEnemy);
 
                 yield return waitForSeconds;

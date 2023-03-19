@@ -11,6 +11,9 @@ public class Tank : BaseEnemy
 
         if (_enemyState == EnemyState.Move)
         {
+            if (!_navMesh.hasPath)
+                return;
+
             if (_navMesh.remainingDistance < 5)
             {
                 _navMesh.isStopped = true;

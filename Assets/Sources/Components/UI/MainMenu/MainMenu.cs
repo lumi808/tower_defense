@@ -1,3 +1,4 @@
+using System;
 using TMPro;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -18,6 +19,13 @@ public class MainMenu : MonoBehaviour
         _easyGameButton.onClick.AddListener(SetEasyGame);
         _hardGameButton.onClick.AddListener(SetHardGame);
         _startGameButton.onClick.AddListener(StartGame);
+        _loadGameButton.onClick.AddListener(LoadGame);
+    }
+
+    private void LoadGame()
+    {
+        PlayerPrefs.SetInt(Game.LOAD_KEY, 1);
+        SceneManager.LoadScene(1);
     }
 
     private void CheckSavedValues()
@@ -51,6 +59,7 @@ public class MainMenu : MonoBehaviour
 
     private void StartGame()
     {
+        PlayerPrefs.SetInt(Game.LOAD_KEY, 0);
         SceneManager.LoadScene(1);
     }
 }

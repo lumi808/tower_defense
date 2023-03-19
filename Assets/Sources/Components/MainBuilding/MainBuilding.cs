@@ -8,11 +8,11 @@ public class MainBuilding : MonoBehaviour
     [SerializeField] private HealthBar _healthBar;
 
 
-    public void Initialize(float maxHealth)
+    public void Initialize(float health, float maxHealth)
     {
-        _health = maxHealth;
+        _health = health;
         _healthBar.Initialize(0f, maxHealth);
-        _healthBar.SetValue(maxHealth);
+        _healthBar.SetValue(health);
     }
 
     public void GetDamage(float damage)

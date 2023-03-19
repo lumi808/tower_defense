@@ -31,21 +31,21 @@ public class WaveSystem : MonoBehaviour
         }
     }
 
-    public void Initialize(List<WaveData> waveData)
+    public void Initialize(List<WaveData> waveData, int waveIndex)
     {
         _waveDataList = waveData;
-        _waveCorotine = StartCoroutine(WaveCycle());
+        _waveCorotine = StartCoroutine(WaveCycle(waveIndex));
     }
 
-    private IEnumerator WaveCycle()
+    private IEnumerator WaveCycle(int waveIndex)
     {
-        CurrentWaveIndex = 0;
+        CurrentWaveIndex = waveIndex;
 
-        foreach (WaveData wave in _waveDataList)
+        for (; CurrentWaveIndex < _waveDataList.Count; CurrentWaveIndex++)
         {
+            WaveData wave = _waveDataList[CurrentWaveIndex];
             yield return TimerCycle(_timeBetweenWaves);
             _spawnEnemySystem.SpawnWaveUnit(wave, 0.15f);
-            CurrentWaveIndex++;
             yield return WaitForAllEnemiesDie();
         }
 

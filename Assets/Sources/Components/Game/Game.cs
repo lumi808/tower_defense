@@ -6,6 +6,7 @@ using UnityEngine;
 public class Game : MonoBehaviour
 {
     public const string KEY = "GameConfigOption";
+    public const string LOAD_KEY = "LoadGame";
 
     public bool IsEasyGame;
 
@@ -18,6 +19,7 @@ public class Game : MonoBehaviour
     [SerializeField] private WaveSystem _waveSystem;
     [SerializeField] private ReturnScreen _looseScreen;
     [SerializeField] private ReturnScreen _winScreen;
+    [SerializeField] private SaveLoadSystem _saveLoadSystem;
 
     public GameConfigData GetCurrentConfig() 
     {
@@ -28,12 +30,25 @@ public class Game : MonoBehaviour
     {
         SceneEventSystem.Instance.GameLoose += OnGameLoose;
         SceneEventSystem.Instance.GameWin += OnGameWin;
-        
-        IsEasyGame = PlayerPrefs.GetInt(KEY) == 0;
 
-        _mainBuildings.Initialize(GetCurrentConfig().MainBuildingHealth);
-        _waveSystem.Initialize(GetCurrentConfig().WaveData);
-        ResourceSystem.Initialize(GetCurrentConfig().StartBalance);
+        StartGame();
+    }
+
+    private void StartGame()
+    {
+        bool isNewGame = PlayerPrefs.GetInt(LOAD_KEY) == 0;
+        if (isNewGame)
+        {
+            IsEasyGame = PlayerPrefs.GetInt(KEY) == 0;
+
+            _mainBuildings.Initialize(GetCurrentConfig().MainBuildingHealth, GetCurrentConfig().MainBuildingHealth);
+            _waveSystem.Initialize(GetCurrentConfig().WaveData, 0);
+            ResourceSystem.Initialize(GetCurrentConfig().StartBalance);
+        }
+        else
+        {
+            _saveLoadSystem.LoadGame();
+        }
     }
 
     private void OnGameWin()

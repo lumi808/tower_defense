@@ -6,7 +6,7 @@ public class ZombieAnimation : MonoBehaviour
 {
     [SerializeField] private Animator _zombieAnimationController;
 
-    public void Attack()
+    public void ZombieAttack()
     {
         _zombieAnimationController.SetBool("Attacking", true);
     }

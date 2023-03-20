@@ -29,6 +29,7 @@ public class TowerData : ScriptableObject
     {
         LazerTower = 0,
         MachineGunTower = 1,
-        MissleTower = 2
+        MissleTower = 2,
+        FiregunTower = 3
     }
 }

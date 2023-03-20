@@ -2,12 +2,8 @@ using UnityEngine;
 
 public class Zombie : BaseEnemy
 {
-    private ZombieAnimation _animationController;
-
-    private void Awake()
-    {
-        _animationController.GetComponent<ZombieAnimation>();
-    }
+    private float _nextTimeAttack;
+    [SerializeField]private ZombieAnimation _zombieAnimation;
 
     private void Update()
     {
@@ -19,18 +15,15 @@ public class Zombie : BaseEnemy
             if (!_navMesh.hasPath)
                 return;
 
-            _animationController.Walking();
-
             if (_navMesh.remainingDistance < 5)
             {
                 _navMesh.isStopped = true;
                 _enemyState = EnemyState.Attack;
             }
-
         }
         else
         {
-            _animationController.Attack();
+            _zombieAnimation.ZombieAttack();
             Attack();
         }
     }

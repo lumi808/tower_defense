@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Zombie
   m_EditorClassIdentifier: 
   Name: Zombie
-  Speed: 1
+  Speed: 10
   Health: 500
   Damage: 50
   AttackRate: 3
   ResourceReward: 20
-  Prefab: {fileID: 1999300619710917253, guid: 08c7596e8a6f14b65b7014806e4a6489, type: 3}
+  Prefab: {fileID: 5577895948838507126, guid: 7afa78b11e978480c8c70a7766907db8, type: 3}

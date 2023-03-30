@@ -20,21 +20,21 @@ MonoBehaviour:
   - Name: Firegun Tower Level 1
     BaseDamage: 300
     SellPrice: 0
-    UpgradePrice: 0
+    UpgradePrice: 200
     AttackRate: 100
     Radius: 10
     Prefab: {fileID: 0}
   - Name: Firegun Tower Level 2
     BaseDamage: 350
     SellPrice: 0
-    UpgradePrice: 0
+    UpgradePrice: 300
     AttackRate: 100
     Radius: 15
     Prefab: {fileID: 0}
   - Name: Firegun Tower Level 3
     BaseDamage: 400
     SellPrice: 0
-    UpgradePrice: 0
+    UpgradePrice: 400
     AttackRate: 100
     Radius: 25
     Prefab: {fileID: 0}

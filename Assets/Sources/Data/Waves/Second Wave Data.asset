@@ -10,10 +10,12 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 045189d5969c83b46b72c99c5953a7b3, type: 3}
-  m_Name: First Wave Data
+  m_Name: Second Wave Data
   m_EditorClassIdentifier: 
   Enemies:
   - Count: 5
     EnemyData: {fileID: 11400000, guid: 95e7b90cc90f64676aa5c2f35c07a1ec, type: 2}
   - Count: 5
     EnemyData: {fileID: 11400000, guid: daabad8a1189d424f8c57d222cbab8f6, type: 2}
+  - Count: 3
+    EnemyData: {fileID: 11400000, guid: 3cd4681983102479fb79c2c6444e8c19, type: 2}

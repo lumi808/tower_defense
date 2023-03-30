@@ -15,9 +15,7 @@ MonoBehaviour:
   Name: Easy
   WaveData:
   - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
+  - {fileID: 11400000, guid: 66a1e0226aa5447a6948502df9cc0ef2, type: 2}
+  - {fileID: 11400000, guid: 0b17d3a80a6f84ee4983e8e2bc81940f, type: 2}
   StartBalance: 150
-  MainBuildingHealth: 1000
+  MainBuildingHealth: 500

@@ -15,14 +15,14 @@ MonoBehaviour:
   Name: Hard
   WaveData:
   - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
-  - {fileID: 11400000, guid: 42ea10b4847b46d449bde1e9f751ace5, type: 2}
+  - {fileID: 11400000, guid: 66a1e0226aa5447a6948502df9cc0ef2, type: 2}
+  - {fileID: 11400000, guid: 66a1e0226aa5447a6948502df9cc0ef2, type: 2}
+  - {fileID: 11400000, guid: 0b17d3a80a6f84ee4983e8e2bc81940f, type: 2}
+  - {fileID: 11400000, guid: 0b17d3a80a6f84ee4983e8e2bc81940f, type: 2}
+  - {fileID: 11400000, guid: ac6c2584b26b14ebca6cdb95bdfc3daa, type: 2}
+  - {fileID: 11400000, guid: ac6c2584b26b14ebca6cdb95bdfc3daa, type: 2}
+  - {fileID: 11400000, guid: c04e957d9c8794773a9efec64f5f7086, type: 2}
+  - {fileID: 11400000, guid: c04e957d9c8794773a9efec64f5f7086, type: 2}
+  - {fileID: 11400000, guid: c04e957d9c8794773a9efec64f5f7086, type: 2}
   StartBalance: 80
-  MainBuildingHealth: 200
+  MainBuildingHealth: 250

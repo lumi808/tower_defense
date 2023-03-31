@@ -4,11 +4,11 @@ using UnityEngine;
 
 public class FiregunTower : BaseTower, IUpgradable
 {
-    [SerializeField] private ParticleSystem[] _fireEffectLevel1;
-    [SerializeField] private ParticleSystem[] _fireEffectLevel2;
-    [SerializeField] private ParticleSystem[] _fireEffectLevel3;
+    [SerializeField] private ParticleSystem _fireEffectLevel1;
+    [SerializeField] private ParticleSystem _fireEffectLevel2;
+    [SerializeField] private ParticleSystem _fireEffectLevel3;
 
-    private ParticleSystem[] _currentFireEffects;
+    private ParticleSystem _currentFireEffects;
 
     private void Start()
     {
@@ -46,7 +46,7 @@ public class FiregunTower : BaseTower, IUpgradable
 
         Vector3 toEnemyVector = target.transform.position - transform.position;
         toEnemyVector.y = 0;
-        _rotateElement.right = toEnemyVector;
+        _rotateElement.forward = toEnemyVector;
 
         Attack(target);
     }
@@ -62,18 +62,12 @@ public class FiregunTower : BaseTower, IUpgradable
     {
         if (isPlaying)
         {
-            for (int i = 0; i < _currentFireEffects.Length; i++)
-            {
-                if (!_currentFireEffects[i].isPlaying)
-                    _currentFireEffects[i].Play();
-            }
+            if (!_currentFireEffects.isPlaying)
+                _currentFireEffects.Play();
         }
         else
         {
-            for (int i = 0; i < _currentFireEffects.Length; i++)
-            {
-                _currentFireEffects[i].Stop();
-            }
+            _currentFireEffects.Stop();
         }
     }
 }

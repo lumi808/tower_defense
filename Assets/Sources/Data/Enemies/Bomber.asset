@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Bomber
   Speed: 10
-  Health: 100
+  Health: 150
   Damage: 10
   AttackRate: 2
   ResourceReward: 10

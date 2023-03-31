@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   Name: Zombie
   Speed: 10
-  Health: 500
+  Health: 750
   Damage: 50
   AttackRate: 3
   ResourceReward: 30
